@@ -38,37 +38,43 @@ public class solution{
 */
 //Above code does not work when elements can repting
 
-public class solution
-{
-    public static void main(String [] args)
-    {
+import java.util.*;
+
+public class solution {
+    public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         System.out.println("Enter the array size:- ");
         int n = scn.nextInt();
-        System.out.println("Enter the "+n+" array elements:- ");
-        int arr[]= new int [n];
+        System.out.println("Enter the " + n + " array elements:- ");
+        int arr[] = new int[n];
 
-        for(int i = 0; i < n; i++)
-        {
-           arr[i]=scn.nextInt();
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
         }
 
-        int ans = largest(arr,n);
-        System.out.println(" Second Largest element is:- "+ ans);
+        int ans = largest(arr, n);
+        if (ans != Integer.MIN_VALUE) {
+            System.out.println("Second Largest element is:- " + ans);
+        } else {
+            System.out.println("There is no second largest element.");
+        }
     }
-    public static int largest(int arr[],int n)
-    {  
+
+    public static int largest(int arr[], int n) {
         int max = Integer.MIN_VALUE;
         int secondlargest = Integer.MIN_VALUE;
-        for(int i=0;i<n;i++)
-        {
-            if(arr[i]>max)
-            {
-               secondlargest = max;
-               max = arr[i];
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > max) {
+                secondlargest = max;
+                max = arr[i];
+            } else if (arr[i] > secondlargest && arr[i] != max) {
+                secondlargest = arr[i];
             }
         }
-        return secondlargest; 
+
+        return secondlargest;
     }
 }
+
 
